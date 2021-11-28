@@ -14,12 +14,6 @@ app.config.from_object('config.DevelopmentConfig')
 with open('credentials.json','r') as f:
     config=json.load(f)
 
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'saritamanas'
-# app.config['MYSQL_DB'] = 'owasp_top10'
- 
-# mysql = MySQL(app)
 
 
 
