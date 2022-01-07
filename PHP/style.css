@@ -137,7 +137,7 @@ html {
 
   /*SQL Injection Part*/ 
   .injection {
-    background-color: #AEFEFF;
+    background-color: #389ba0;
     color: black;
     height: 100vh;
     width: 100vw;
@@ -146,11 +146,51 @@ html {
     text-align: center;
     padding-top: 5%;
     font-size: 50px;
-    color: rgb(179, 156, 25);
+    color:  orange;
   }
   .main {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 10%;
+  }
+
+  .btn-submit {
+    background-color: #235558;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover {
+    box-shadow:  3px;
+	background: black;
+	border-color: #35858B;
+  color: white;
+  }
+  .input-stuff:hover {
+    box-shadow:  3px;
+	background: #fff;
+	border-color: #072227;
+  }
+
+  .FinalOutput {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: 2px solid #072227;
+    margin-left: 33%;
+    margin-right: 33%;
+    background-color: black;
+    color: white;
+  }
+  .lolz {
+    margin:0;
+    padding:0;
   }
