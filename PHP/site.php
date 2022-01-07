@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="shortcut icon" href="owaspLogo.png">
     <title>SQL Injection</title>
 </head>
 <body>
@@ -47,49 +48,62 @@
     </section>
     <section class="injection" id="main">
         <div class="injectionHeading">
-            <h1>USER CREDS</h1>
+            <h1>TRY IT OUT</h1>
         </div>
         <div class="main">
             <form action="main.php" method="get">
-                First Name: <input type="text" name="fname">
+                <b>First Name : </b><input type="text" name="fname" class="input-stuff" required/>
                 <br>
                 <br>
-                Last Name: <input type="text" name="lname">
+                <b>Last Name : </b><input type="text" name="lname" class="input-stuff" required/>
                 <br>
                 <br>
-                <input type="submit">
+                <center><input type="submit" class="btn-submit"></center>
             </form>
         </div>
-        <?php
-        if (isset($_GET['fname']) && isset($_GET['lname'])) {
-            $servername = "localhost";
-            $username = "root";
-            $password = "ganesh99";
-            $dbname = "owasp";
-    
-            $conn = new mysqli($servername, $username, $password, $dbname);
-    
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            $userFirstName = $_GET['fname'];
-            $userLastName = $_GET['lname'];
-            //$id = $_GET['id'];
-            $sql = "SELECT id, fname, lname FROM myDB WHERE fname = '$userFirstName' AND lname = '$userLastName'";
-            //$sql = "SELECT first_name, last_name FROM users WHERE id = ".$id;
-            $result = $conn->query($sql);
-    
-            if ($result->num_rows > 0) {
-           
-            while($row = $result->fetch_assoc()) {
-                echo "id: " . $row["id"]. " - Name: " . $row["fname"]. " " . $row["lname"]. "<br>";
-            }
-            } else {
-                echo "0 results";
-            }
-            $conn->close();
-        }
-    ?>
+        <br>
+            <div class="FinalOutput">
+                <?php
+                if (isset($_GET['fname']) && isset($_GET['lname'])) {
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "ganesh99";
+                    $dbname = "owasp";
+            
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+            
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $userFirstName = $_GET['fname'];
+                    $userLastName = $_GET['lname'];
+                    //$id = $_GET['id'];
+                    $sql = "SELECT id, fname, lname FROM myDB WHERE fname = '$userFirstName' AND lname = '$userLastName'";
+                    //$sql = "SELECT first_name, last_name FROM users WHERE id = ".$id;
+                    $result = $conn->query($sql);
+            
+                    if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "| id: " . $row["id"]. " | Name : " . $row["fname"]. " " . $row["lname"]. " |<br>";
+                    }
+                    } else {
+                        echo "0 results";
+                    }
+                    
+                    $conn->close();
+                }
+            ?>
+        
     </section>
 </body>
+<script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
 </html>
